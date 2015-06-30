@@ -1,0 +1,2 @@
+# primes
+Calculates primes
