@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Primes</title>
+</head>
+<body>
+    <h2>Compute the primes between two numbers</h2>
+    <p>Start number: <input data-bind="value: startNum"/></p>
+    <p>End number: <input data-bind="value: endNum"/></p>
+    <textarea name="" data-bind="value: result" cols="60" rows="20"></textarea>
+    <h3>Computation Details</h3>
+    <table>
+        <thead><tr>
+            <th>Item</th><th>Value</th>
+        </tr></thead>
+        <tbody data-bind="foreach: $root.compData">
+            <tr>
+                <td data-bind="text: item"></td>
+                <td data-bind="text: value"></td>
+            </tr>
+        </tbody>
+    </table>
+<!--     <p data-bind="text: compdata[0].item"></p>
+ -->
+    <script src="js/knockout-3.3.0.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
