@@ -1,9 +1,11 @@
+var ko, console;
+
 // A class to represent the computation data
 function dataLine(item, value) {
   var self = this;
   self.item = item;
   self.value = value;
-};
+}
 
 function AppViewModel() {
   var self = this;
@@ -16,14 +18,14 @@ function AppViewModel() {
 
     var start = new Date().getTime();
     var num = parseInt(topNum) + 1;
-    // store computation info here for output
-    // var computationData = [];
+
     // create a boolean array from 2 to num
     var primes = [];
     for (var i = 0; i < num; i++) {
       primes.push(true);
     }
     // get the maximum possible prime divisor
+    // Not necessarily a prime number
     var maxDivisor = Math.floor(Math.sqrt(num));
 
     // zero and one are not prime
@@ -53,19 +55,23 @@ function AppViewModel() {
         }
       }
     }
+
+    var primesToTotal = numberOfPrimes / topNum;
     var end = new Date().getTime();
     var computationMsec =  (end - start);
 
     // answerString += '\n\n' + "Maximum divisor: " + maxDivisor;
     // answerString += '\n' + "Number of Primes: " + numberOfPrimes;
     // answerString += '\n' + "Computation msec: " + computationMsec;
+    console.log('start = ', start, '  end = ', end);
 
     self.compData.push( new dataLine('Number of Primes', numberOfPrimes));
-    self.compData.push( new dataLine('Maximum divisor', maxDivisor));
+    self.compData.push( new dataLine('# primes / total #', primesToTotal));
+    self.compData.push( new dataLine('Maximum sqrt of End Number', maxDivisor));
     self.compData.push( new dataLine('Maximum prime factor', maxPrimeFactor));
     self.compData.push( new dataLine('Computation time, msec', computationMsec));
     return  answerString;
-  };
+  }
 
   self.startNum = ko.observable(2);
   self.endNum = ko.observable(100);
@@ -74,7 +80,7 @@ function AppViewModel() {
     return computePrimes(self.startNum(), self.endNum());
   });
 
-};
+}
 
 ko.applyBindings(new AppViewModel());
 
