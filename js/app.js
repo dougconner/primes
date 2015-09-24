@@ -56,7 +56,7 @@ function AppViewModel() {
       }
     }
 
-    var primesToTotal = numberOfPrimes / topNum;
+    var primesToTotal = numberOfPrimes / (topNum - startNum);
     var end = new Date().getTime();
     var computationMsec =  (end - start);
 
@@ -67,7 +67,7 @@ function AppViewModel() {
 
     self.compData.push( new dataLine('Number of Primes', numberOfPrimes));
     self.compData.push( new dataLine('# primes / total #', primesToTotal));
-    self.compData.push( new dataLine('Maximum sqrt of End Number', maxDivisor));
+    self.compData.push( new dataLine('Square root of End Number', maxDivisor));
     self.compData.push( new dataLine('Maximum prime factor', maxPrimeFactor));
     self.compData.push( new dataLine('Computation time, msec', computationMsec));
     return  answerString;
